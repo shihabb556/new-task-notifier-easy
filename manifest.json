@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Telegram Task Notifier",
+    "version": "1.0",
+    "permissions": [
+        "storage"
+    ],
+    "host_permissions": [
+        "http://123.176.58.194:11116/ris/*",
+        "https://api.telegram.org/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://your-site.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    }
+}

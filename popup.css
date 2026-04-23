@@ -1,0 +1,78 @@
+body {
+  width: 320px;
+  margin: 0;
+  padding: 12px;
+  background: #f3f4f6;
+  font-family: Arial, sans-serif;
+}
+
+.container h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+#addBtn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.bot-card {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.row {
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.running {
+  color: green;
+}
+
+.paused {
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.toggleBtn,
+.removeBtn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.toggleBtn {
+  background: #f59e0b;
+}
+
+.removeBtn {
+  background: #dc2626;
+}
