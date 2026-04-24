@@ -14,7 +14,7 @@ function renderBots() {
     botList.innerHTML = "";
 
     if (bots.length === 0) {
-      botList.innerHTML = "<p>No bot added.</p>";
+      botList.innerHTML = "<p>No bots configured yet.</p>";
       return;
     }
 
@@ -23,20 +23,23 @@ function renderBots() {
       card.className = "bot-card";
 
       card.innerHTML = `
-        <div class="row"><strong>Chat ID:</strong> ${bot.chatId}</div>
         <div class="row">
-          <strong>Status:</strong>
-          <span class="${bot.enabled ? "running" : "paused"}">
+          <strong>Chat ID</strong>
+          <span>${bot.chatId}</span>
+        </div>
+        <div class="row">
+          <strong>Status</strong>
+          <span class="status-badge ${bot.enabled ? "running" : "paused"}">
             ${bot.enabled ? "Running" : "Paused"}
           </span>
         </div>
 
         <div class="buttons">
-          <button class="toggleBtn" data-index="${index}">
-            ${bot.enabled ? "Pause" : "Start"}
+          <button class="btn-small btn-toggle" data-index="${index}">
+            ${bot.enabled ? "Pause Bot" : "Start Bot"}
           </button>
 
-          <button class="removeBtn" data-index="${index}">
+          <button class="btn-small btn-remove" data-index="${index}">
             Remove
           </button>
         </div>
@@ -45,7 +48,7 @@ function renderBots() {
       botList.appendChild(card);
     });
 
-    document.querySelectorAll(".toggleBtn").forEach((btn) => {
+    document.querySelectorAll(".btn-toggle").forEach((btn) => {
       btn.onclick = () => {
         const index = Number(btn.dataset.index);
         bots[index].enabled = !bots[index].enabled;
@@ -53,7 +56,7 @@ function renderBots() {
       };
     });
 
-    document.querySelectorAll(".removeBtn").forEach((btn) => {
+    document.querySelectorAll(".btn-remove").forEach((btn) => {
       btn.onclick = () => {
         const index = Number(btn.dataset.index);
         bots.splice(index, 1);
@@ -67,7 +70,15 @@ addBtn.onclick = () => {
   const botToken = botTokenInput.value.trim();
   const chatId = chatIdInput.value.trim();
 
-  if (!botToken || !chatId) return;
+  if (!botToken || !chatId) {
+    addBtn.innerText = "Please fill all fields";
+    addBtn.style.background = "var(--danger)";
+    setTimeout(() => {
+      addBtn.innerText = "Add Bot Configuration";
+      addBtn.style.background = "var(--primary)";
+    }, 2000);
+    return;
+  }
 
   chrome.storage.local.get(["bots"], (data) => {
     const bots = data.bots || [];
@@ -81,6 +92,12 @@ addBtn.onclick = () => {
     chrome.storage.local.set({ bots }, () => {
       botTokenInput.value = "";
       chatIdInput.value = "";
+      addBtn.innerText = "Bot Added!";
+      addBtn.style.background = "var(--success)";
+      setTimeout(() => {
+        addBtn.innerText = "Add Bot Configuration";
+        addBtn.style.background = "var(--primary)";
+      }, 2000);
       renderBots();
     });
   });

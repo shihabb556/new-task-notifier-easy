@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Telegram Bot Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="container">
-    <h2>Telegram Bot Manager</h2>
+    <h2>Task Notifier</h2>
 
-    <input id="botToken" type="text" placeholder="Bot Token">
-    <input id="chatId" type="text" placeholder="Chat ID">
+    <div class="input-group">
+      <input id="botToken" type="text" placeholder="Bot Token">
+      <input id="chatId" type="text" placeholder="Chat ID">
+      <button id="addBtn">Add Bot Configuration</button>
+    </div>
 
-    <button id="addBtn">Add Bot</button>
-
-    <div id="botList"></div>
+    <div id="botList">
+      <!-- Bots will be rendered here -->
+    </div>
   </div>
 
   <script src="popup.js"></script>

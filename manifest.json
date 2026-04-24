@@ -12,7 +12,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://your-site.com/*"
+                "http://123.176.58.194:11116/ris/*"
             ],
             "js": [
                 "content.js"
