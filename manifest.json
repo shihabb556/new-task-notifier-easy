@@ -2,8 +2,13 @@
     "manifest_version": 3,
     "name": "Telegram Task Notifier",
     "version": "1.0",
+    "icons": {
+        "128": "icons/icon128.png"
+    },
     "permissions": [
-        "storage"
+        "storage",
+        "notifications",
+        "offscreen"
     ],
     "host_permissions": [
         "http://123.176.58.194:11116/ris/*",
